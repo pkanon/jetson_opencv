@@ -10,8 +10,8 @@ def gstreamer_pipeline(
         sensor_mode=3,
         display_width=640,
         display_height=360,
-        framerate=60,
-        flip_method=2,
+        framerate=30,
+        flip_method=0,
 ):
     return (
             "nvarguscamerasrc sensor-id=%d sensor-mode=%d ! "
