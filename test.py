@@ -37,7 +37,8 @@ def gstreamer_pipeline(
 
 
 cap = cv.VideoCapture(gstreamer_pipeline(), cv.CAP_GSTREAMER)
-cap2 = cv.VideoCapture("/dev/video1")
+cap1 = cv.VideoCapture("/dev/video1")
+#cap2 = cv.VideoCapture("/dev/video2")
 
 # FPS calculation
 fpsReport = 0
@@ -48,7 +49,8 @@ timestamp = time.time()
 while cap.isOpened():
     
     ret, frame = cap.read()
-    ret, frame2 = cap2.read()
+    ret, frame1 = cap1.read()
+    #ret, frame2 = cap2.read()
     # if frame is read correctly ret is True
     if not ret:
         print("Can't receive frame (stream end?). Exiting ...")
@@ -61,19 +63,22 @@ while cap.isOpened():
     # print('fps is',fpsReport)
     timestamp = time.time()
     # str(round(fpsReport,2))
-    cv.putText( gray, str(round(fpsReport, 1)) + " FPS", (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255),2,)
+
+    #cv.putText( gray, str(round(fpsReport, 1)) + " FPS", (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255),2,)
     cv.putText( frame, str(round(fpsReport, 1)) + " FPS", (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255),2,)
-    cv.putText( frame2, str(round(fpsReport, 1)) + " FPS", (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255),2,)
-    
+    cv.putText( frame1, str(round(fpsReport, 1)) + " FPS", (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255),2,)
+    #cv.putText( frame2, str(round(fpsReport, 1)) + " FPS", (50, 50), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255),2,)
     #
     #
     #
     
-    cv.imshow("gray", gray)
+    #cv.imshow("gray", gray)
     #cv.moveWindow("gray",0,0)
     cv.imshow("frame", frame)
     #cv.moveWindow("frame",0,0)
-    cv.imshow("frame2", frame2)
+    cv.imshow("frame1", frame1)
+    #cv.moveWindow("frame1",0,0)
+    #cv.imshow("frame2", frame2)
     #cv.moveWindow("frame2",0,0)
     if cv.waitKey(1) == ord("q"):
         break
