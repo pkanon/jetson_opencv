@@ -38,7 +38,7 @@ while True:
          # time stamp FPS
         dt = time.time() - timestamp
         fps = 1 / dt
-        fpsReport = 0.85 * fpsReport + 0.15 * fps
+        fpsReport = 0.9 * fpsReport + 0.1 * fps
         timestamp = time.time()
         #print('fps is',fpsReport)
         
